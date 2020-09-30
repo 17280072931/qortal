@@ -665,6 +665,12 @@ public class HSQLDBDatabaseUpdates {
 					stmt.execute("CREATE INDEX ATStateHeightIndex on ATStates (height)");
 					break;
 
+				case 26:
+					// AT sleep-until-message support
+					stmt.execute("ALTER TABLE ATs ADD sleep_until_message_timestamp BIGINT");
+					stmt.execute("ALTER TABLE ATStates ADD sleep_until_message_timestamp BIGINT");
+					break;
+
 				default:
 					// nothing to do
 					return false;
